@@ -1,5 +1,6 @@
 require("dotenv").config();
 
+const path = require("path");
 const express = require("express");
 const jwt = require("jsonwebtoken");
 
@@ -12,8 +13,9 @@ app.post("/signup", (req, res, next) => {
   try {
     const token = jwt.sign({ username, password }, process.env["SECRET"]);
     res.send({
+      success: true,
       message: "Thanks for signing up!",
-      token: token
+      token: token,
     });
   } catch (error) {
     next(error);
@@ -27,7 +29,7 @@ app.get("/authenticate", (req, res, next) => {
     res.status(403);
     next({
       message: "Sorry, you are not an authenticated user",
-      name: "Unauthorized"
+      name: "Unauthorized",
     });
     return;
   }
@@ -41,8 +43,8 @@ app.get("/authenticate", (req, res, next) => {
       message: `Correctly Authenticated!`,
       data: {
         username,
-        iat
-      }
+        iat,
+      },
     });
   } catch (error) {
     next(error);
@@ -51,7 +53,7 @@ app.get("/authenticate", (req, res, next) => {
 
 app.get("*", (req, res, next) => {
   try {
-    res.send("🔐 Horray for JWT's");
+    res.sendFile(path.join(__dirname, "index.html"));
   } catch (error) {
     next(error);
   }
@@ -60,7 +62,7 @@ app.get("*", (req, res, next) => {
 app.use((err, req, res, next) => {
   res.send({
     message: err.message,
-    name: err.name
+    name: err.name,
   });
 });
 

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🔐 JWTs are Cool!</title>
+  </head>
+  <body>
+    <h1>🔐 JWT Authorization Endpoint</h1>
+    <p>
+      This API contains two endpoints. One for ✍️'signing up' and one for
+      🤝'authenticating' a user.
+    </p>
+    <ul style="list-style: none">
+      <li>
+        <h3>/signup</h3>
+        <p>
+          Must pass an <code>object</code> with <code>username</code> and
+          <code>password</code> properties in request body.
+        </p>
+        <p>
+          Returns an <code>object</code> with <code>success</code>,
+          <code>message</code> and <code>token</code>
+          properties
+        </p>
+      </li>
+      <li>
+        <h3>/authenticate</h3>
+        <p>
+          The incoming request must send the token back in authorization header
+          in following format:
+        </p>
+        <p><code>Authorization: `Bearer ${token}`</code></p>
+        <p>
+          On success, will return an <code>object</code> with
+          <code>success</code>, <code>message</code> and <code>data</code>
+          properties
+        </p>
+      </li>
+    </ul>
+  </body>
+</html>
