@@ -1,5 +1,3 @@
-require("dotenv").config();
-
 const path = require("path");
 const express = require("express");
 const jwt = require("jsonwebtoken");
@@ -14,7 +12,7 @@ app.use(express.json());
 app.post("/signup", (req, res, next) => {
   const { username, password } = req.body;
   try {
-    const token = jwt.sign({ username, password }, process.env["SECRET"]);
+    const token = jwt.sign({ username, password }, "shhhh");
     res.send({
       success: true,
       message: "Thanks for signing up!",
@@ -40,7 +38,7 @@ app.get("/authenticate", (req, res, next) => {
   const prefix = "Bearer ";
   const token = authorization.slice(prefix.length);
   try {
-    const { username, iat } = jwt.verify(token, process.env["SECRET"]);
+    const { username, iat } = jwt.verify(token, "shhhh");
     res.send({
       success: true,
       message: `Correctly Authenticated!`,
