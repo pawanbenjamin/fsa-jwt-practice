@@ -4,15 +4,16 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>🔐 JWTs are Cool!</title>
   </head>
   <body>
     <h1>🔐 JWT Authorization Endpoint</h1>
     <p>
-      This API contains two endpoints. One for ✍️'signing up' and one for
-      🤝'authenticating' a user.
+      This API contains two endpoints. One for ✍️ signing up and one for 🤝
+      authenticating a user.
     </p>
-    <ul style="list-style: none">
+    <ul>
       <li>
         <h3>/signup</h3>
         <p>
@@ -24,6 +25,22 @@
           <code>message</code> and <code>token</code>
           properties
         </p>
+        <h4>Sample Call:</h4>
+        <pre>
+          <code>
+            fetch('https://fsa-jwt-practice.herokuapp.com/signup', 
+              { 
+                method: "POST", 
+                headers: { 
+                  "Content-Type": "application/json" 
+                }, 
+                body: JSON.stringify({ 
+                  username: "some-username", 
+                  password: "super-secret-999" 
+                }) 
+              })
+          </code>
+        </pre>
       </li>
       <li>
         <h3>/authenticate</h3>
@@ -37,6 +54,19 @@
           <code>success</code>, <code>message</code> and <code>data</code>
           properties
         </p>
+        <h4>Sample Call:</h4>
+        <pre>
+          <code>
+            fetch('https://fsa-jwt-practice.herokuapp.com/authenticate', 
+              { 
+                method: "GET", 
+                headers: { 
+                  "Content-Type": "application/json",
+                  "Authorization": `Bearer ${your-token-here}` 
+                }
+              })
+          </code>
+        </pre>
       </li>
     </ul>
   </body>
