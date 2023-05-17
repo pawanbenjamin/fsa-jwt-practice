@@ -69,6 +69,6 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(8080, () => {
-  console.log(`Listening on PORT 8080`);
+app.listen(process.env.PORT || 8080, () => {
+  console.log(`Listening on PORT ${process.env.PORT || 8080}`);
 });
