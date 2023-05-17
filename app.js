@@ -2,7 +2,7 @@ const path = require("path");
 const express = require("express");
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
-
+const PORT = process.env.PORT || 8080;
 const app = express();
 
 app.use(cors());
@@ -69,6 +69,6 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(process.env.PORT || 8080, () => {
-  console.log(`Listening on PORT ${process.env.PORT || 8080}`);
+app.listen(PORT, () => {
+  console.log(`Listening on PORT ${PORT}`);
 });
