@@ -41,6 +41,16 @@
               })
           </code>
         </pre>
+        <h4>Sample Response:</h4>
+        <pre>
+          <code>
+            {
+              "success": true,
+              "message": "Thanks for signing up!",
+              "token": "...ommitted for brevity"
+            }
+          </code>
+        </pre>
       </li>
       <li>
         <h3>/authenticate</h3>
@@ -65,6 +75,19 @@
                   "Authorization": `Bearer ${your-token-here}` 
                 }
               })
+          </code>
+        </pre>
+        <h4>Sample Response:</h4>
+        <pre>
+          <code>
+            {
+              "success": true,
+              "message": "Correctly Authenticated!",
+              "data": {
+                "username": "Barry",
+                "iat": 1684331768
+              }
+            }
           </code>
         </pre>
       </li>
